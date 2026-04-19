@@ -1,0 +1,5 @@
+{
+  "name": "PhotoPulse",
+  "description": "Smart AI photo critic for selective galleries. Includes dedicated modes for Weddings, Vacation Trips, and General photography with local deduplication and face detection.",
+  "requestFramePermissions": []
+}
