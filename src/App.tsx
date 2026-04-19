@@ -8,6 +8,7 @@ import {
   Loader2, 
   Image as ImageIcon,
   ChevronRight,
+  ChevronLeft,
   Heart,
   Eye,
   Layout,
@@ -30,6 +31,11 @@ export default function App() {
   const [selectedPhoto, setSelectedPhoto] = useState<RatedPhoto | null>(null);
   const [filter, setFilter] = useState<string>("All");
   const [mode, setMode] = useState<AnalysisMode>('wedding');
+
+  const resetApp = () => {
+    setPhotos([]);
+    setSelectedPhoto(null);
+  };
 
   const processedPhotos = useMemo(() => {
     // 1. First, respect local deduplication logic results
@@ -280,6 +286,15 @@ export default function App() {
           </div>
           
           <div className="flex items-center gap-4">
+            {photos.length > 0 && (
+              <button
+                onClick={resetApp}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-slate-500 hover:text-indigo-600 transition-colors text-xs font-bold uppercase tracking-wider group"
+              >
+                <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
+                Start Over
+              </button>
+            )}
             <div className="hidden lg:flex items-center bg-slate-100 rounded-xl p-1 border border-slate-200">
               <button
                 onClick={() => setMode('wedding')}
